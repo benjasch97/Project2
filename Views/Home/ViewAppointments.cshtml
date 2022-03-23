@@ -1,6 +1,6 @@
 ﻿@{
 }
- <!-- model import-->
+@model List<Reservation>
 
 
 <table class="table table-bordered table-striped">
@@ -18,7 +18,13 @@
         @foreach (var x in Model)
             {
                 <tr>
-                    <td></td>
+                    <td>@x.AppointmentId</td>
+                    <td>@x.Date</td>
+                    <td>@x.NameOfGroup</td>
+                    <td>@x.SizeOfGroup</td>
+                    <td>@x.Email</td>
+                    <td>@x.Phone</td>
+                    <td>@x.Time</td>
                 </tr>
             }
     </tbody>
