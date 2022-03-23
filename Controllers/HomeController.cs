@@ -17,5 +17,9 @@ namespace Project2.Controllers
         {
             return View();
         }
+        public IActionResult ViewAppointments()
+        {
+            return View();
+        }
     }
 }
