@@ -9,8 +9,36 @@ namespace Project2.Controllers
 {
     public class HomeController : Controller
     {
+        private TempleContext _templeContext { get; set; }
 
+        public HomeController(TempleContext someName)
+        {
+            _templeContext = someName;
+        }
+        
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult TimeSlots()
+        {
+            var times = _templeContext.TimeSlots
+                .ToList();
+            
+            return View(times);
+        }
+        public IActionResult ViewAppointments()
+        {
+            return View();
+        }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        
         [HttpPost]
         public IActionResult SignUp(Reservation r)
         {
@@ -27,28 +55,6 @@ namespace Project2.Controllers
                 return View();
             }
             
-        }
-
-    
-
-
-
-
-
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult TimeSlots()
-        {
-            return View();
-        }
-
-        public IActionResult SignUp()
-        {
-            return View();
         }
 
     }
