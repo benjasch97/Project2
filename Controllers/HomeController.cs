@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Project2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,33 @@ namespace Project2.Controllers
 {
     public class HomeController : Controller
     {
+
+
+        [HttpPost]
+        public IActionResult SignUp(Reservation r)
+        {
+            if (ModelState.IsValid)
+            {
+                TempleContext.Add(r);
+                TempleContext.SaveChanges();
+
+                return RedirectToAction("Home");
+            }
+
+            else
+            {
+                return View();
+            }
+            
+        }
+
+    
+
+
+
+
+
+
         public IActionResult Index()
         {
             return View();
@@ -17,5 +45,14 @@ namespace Project2.Controllers
         {
             return View();
         }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
     }
+
 }
+
+
