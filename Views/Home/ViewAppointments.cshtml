@@ -1,6 +1,8 @@
 ﻿@{
+
 }
 
+@model List<Reservation>
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -17,15 +19,15 @@
         @foreach (var x in Model)
             {
                 <tr>
-                    <td>@x.AppointmentId</td>
-                    <td>@x.Date</td>
-                    <td>@x.NameOfGroup</td>
-                    <td>@x.SizeOfGroup</td>
+                    <td>@x.ReservationId</td>
+                    <td>@x.TimeSlot.Date</td>
+                    <td>@x.GroupName</td>
+                    <td>@x.GroupSize</td>
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
-                    <td>@x.Time</td>
+                    <td>@x.TimeSlot.Time</td>
 
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.ReservationId">Edit</a></td>
                     <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
                 </tr>
             }
