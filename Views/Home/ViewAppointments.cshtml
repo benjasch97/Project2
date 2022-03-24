@@ -1,5 +1,5 @@
 ﻿@{
-
+    ViewData["Title"] = "Reservations";
 }
 
 @model List<Reservation>
@@ -13,23 +13,25 @@
             <td>Email</td>
             <td>Phone</td>
             <td>Time</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var x in Model)
-            {
-                <tr>
-                    <td>@x.ReservationId</td>
-                    <td>@x.TimeSlot.Date</td>
-                    <td>@x.GroupName</td>
-                    <td>@x.GroupSize</td>
-                    <td>@x.Email</td>
-                    <td>@x.Phone</td>
-                    <td>@x.TimeSlot.Time</td>
+        {
+            <tr>
+                <td>@x.ReservationId</td>
+                <td>@x.TimeSlot.Date</td>
+                <td>@x.GroupName</td>
+                <td>@x.GroupSize</td>
+                <td>@x.Email</td>
+                <td>@x.Phone</td>
+                <td>@x.TimeSlot.Time</td>
 
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.ReservationId">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
-                </tr>
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-reservationid="@x.ReservationId">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-reservationid="@x.ReservationId">Delete</a></td>
+            </tr>
             }
     </tbody>
 </table>
