@@ -16,6 +16,7 @@ namespace Project2.Controllers
             _templeContext = someName;
         }
         
+
         public IActionResult Index()
         {
             return View();
@@ -32,5 +33,32 @@ namespace Project2.Controllers
         {
             return View();
         }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult SignUp(Reservation r)
+        {
+            if (ModelState.IsValid)
+            {
+                TempleContext.Add(r);
+                TempleContext.SaveChanges();
+
+                return RedirectToAction("Home");
+            }
+
+            else
+            {
+                return View();
+            }
+            
+        }
+
     }
+
 }
+
+
