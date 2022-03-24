@@ -13,7 +13,7 @@ namespace Project2.Controllers
             return View();
         }
 
-        public IActionResult Appointments()
+        public IActionResult TimeSlots()
         {
             return View();
         }
