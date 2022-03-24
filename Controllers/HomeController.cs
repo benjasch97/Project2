@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project2.Models;
 using Project2.Models.ViewModels;
 using System;
@@ -32,17 +33,55 @@ namespace Project2.Controllers
         }
         public IActionResult ViewAppointments()
         {
-            return View();
+            var appointment = _templeContext.Reservations
+                .Include(x => x.TimeSlot)
+                .ToList();
+            return View(appointment);
         }
 
 
-        public IActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int reservationid)
         {
-            return View();
+            ViewBag.Categories = _templeContext.Reservations.ToList();
+
+            var reservation = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
+            //connect id to bring the info back
+            return View("SignUp", reservation);
         }
-        public IActionResult Delete()
+
+        [HttpPost]
+        public IActionResult Edit(Reservation bob)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _templeContext.Update(bob);
+                _templeContext.SaveChanges();
+                return RedirectToAction("ViewAppointments");
+            }
+            else
+            {
+                ViewBag.Categories = _templeContext.TimeSlots.ToList();
+                return View("SignUp");
+            }
+        }
+
+    
+        [HttpGet]
+        public IActionResult Delete(int reservationid)
+        {
+            var movies = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
+            return View(movies);
+        }
+        [HttpPost]
+        public IActionResult Delete(Reservation r)
+        {
+            _templeContext.Reservations.Remove(r);
+            _templeContext.SaveChanges();
+
+            return RedirectToAction("ViewAppointments");
+
+
         }
 
         [HttpGet]
@@ -65,8 +104,10 @@ namespace Project2.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _templeContext.Add(r);
                 _templeContext.SaveChanges();
+
 
                 return RedirectToAction("Home");
             }
