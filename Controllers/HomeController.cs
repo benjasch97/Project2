@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Project2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace Project2.Controllers
 {
     public class HomeController : Controller
     {
+        private TempleContext _templeContext { get; set; }
+
+        public HomeController(TempleContext someName)
+        {
+            _templeContext = someName;
+        }
+        
         public IActionResult Index()
         {
             return View();
@@ -15,7 +23,10 @@ namespace Project2.Controllers
 
         public IActionResult TimeSlots()
         {
-            return View();
+            var times = _templeContext.TimeSlots
+                .ToList();
+            
+            return View(times);
         }
     }
 }
