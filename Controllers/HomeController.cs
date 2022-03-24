@@ -34,6 +34,16 @@ namespace Project2.Controllers
             return View();
         }
 
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         public IActionResult SignUp()
         {
             return View();
@@ -56,6 +66,7 @@ namespace Project2.Controllers
             }
             
         }
+
 
     }
 
