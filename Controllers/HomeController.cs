@@ -33,10 +33,12 @@ namespace Project2.Controllers
         }
         public IActionResult ViewAppointments()
         {
+
             var appointment = _templeContext.Reservations
                 .Include(x => x.TimeSlot)
                 .ToList();
             return View(appointment);
+
         }
 
 
@@ -100,23 +102,26 @@ namespace Project2.Controllers
         }
         
         [HttpPost]
-        public IActionResult SignUp(Reservation r)
+        public IActionResult SignUp(AppointmentViewModel r)
         {
+            r.Reservation.TimeSlotId = r.TimeSlot.TimeSlotId;
             if (ModelState.IsValid)
             {
 
-                _templeContext.Add(r);
+                _templeContext.Add(r.Reservation);
                 _templeContext.SaveChanges();
 
+                return RedirectToAction("Index");
 
-                return RedirectToAction("Home");
             }
 
             else
             {
                 return View();
             }
-            
+
+
+
         }
 
 

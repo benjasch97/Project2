@@ -10,7 +10,7 @@ namespace Project2.Models
     {
         [Key]
         [Required]
-        public long TimeSlotId { get; set; }
+        public int TimeSlotId { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
         public bool Reserved { get; set; }
