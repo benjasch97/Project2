@@ -29,7 +29,7 @@ namespace Project2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<byte>("GroupSize")
+                    b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Phone")
@@ -39,8 +39,6 @@ namespace Project2.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ReservationId");
-
-                    b.HasIndex("TimeSlotId");
 
                     b.ToTable("Reservations");
                 });
@@ -702,15 +700,6 @@ namespace Project2.Migrations
                             Reserved = false,
                             Time = "8:00 PM"
                         });
-                });
-
-            modelBuilder.Entity("Project2.Models.Reservation", b =>
-                {
-                    b.HasOne("Project2.Models.TimeSlot", "TimeSlot")
-                        .WithMany()
-                        .HasForeignKey("TimeSlotId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

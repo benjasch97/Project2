@@ -8,7 +8,7 @@ using Project2.Models;
 namespace Project2.Migrations
 {
     [DbContext(typeof(TempleContext))]
-    [Migration("20220324011150_initial")]
+    [Migration("20220324025702_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Project2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<byte>("GroupSize")
+                    b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Phone")
@@ -41,8 +41,6 @@ namespace Project2.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ReservationId");
-
-                    b.HasIndex("TimeSlotId");
 
                     b.ToTable("Reservations");
                 });
@@ -704,15 +702,6 @@ namespace Project2.Migrations
                             Reserved = false,
                             Time = "8:00 PM"
                         });
-                });
-
-            modelBuilder.Entity("Project2.Models.Reservation", b =>
-                {
-                    b.HasOne("Project2.Models.TimeSlot", "TimeSlot")
-                        .WithMany()
-                        .HasForeignKey("TimeSlotId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
