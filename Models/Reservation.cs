@@ -13,12 +13,15 @@ namespace Project2.Models
         [Key]
         [BindNever]
         public int ReservationId { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Please enter a group name")]
         public string GroupName { get; set; }
-        [Required]
-        [Range(1, 15, ErrorMessage = "The maximum group size is 15.")]
+
+        [Required(ErrorMessage = "The maximum group size is 15.")]
+        [Range(1, 15)]
         public byte GroupSize { get; set; }
-        [Required]
+       
+        [Required(ErrorMessage = "Please enter an email")]
         public string Email { get; set; }
         public string Phone { get; set; }
 

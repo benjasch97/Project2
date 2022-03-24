@@ -2,10 +2,10 @@
     ViewBag.Title = "Time Slots";
 }
 
-
+@model List<TimeSlot>
 <h2>Available Times</h2>
 
-<table class="table table-bordered table-striped" >
+<table class="table table-bordered table-striped">
 
     <thead>
         <tr>
@@ -14,5 +14,25 @@
             <th></th>
         </tr>
     </thead>
+    <tbody>
+        @foreach (var x in Model)
+            {
+        <tr>
+            <td>@x.Date</td>
+            <td>@x.Time</td>
+
+            <td><a asp-controller="Home" asp-action="SignUp" asp-route-timeslotid="@x.TimeSlotId">Reserve</a></td>
+        </tr>
+            }
+
+
+    </tbody>
 
 </table>
+
+
+
+<br />
+
+
+
