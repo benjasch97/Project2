@@ -26,6 +26,7 @@ namespace Project2.Models
         public string Phone { get; set; }
 
         [Required]
-        public long TimeSlotId { get; set; }
+        public int TimeSlotId { get; set; }
+        public TimeSlot TimeSlot { get; set; }
     }
 }

@@ -8,8 +8,8 @@ using Project2.Models;
 namespace Project2.Migrations
 {
     [DbContext(typeof(TempleContext))]
-    [Migration("20220324025702_initial")]
-    partial class initial
+    [Migration("20220324040437_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,17 +37,19 @@ namespace Project2.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("TimeSlotId")
+                    b.Property<int>("TimeSlotId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ReservationId");
+
+                    b.HasIndex("TimeSlotId");
 
                     b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("Project2.Models.TimeSlot", b =>
                 {
-                    b.Property<long>("TimeSlotId")
+                    b.Property<int>("TimeSlotId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -67,641 +69,650 @@ namespace Project2.Migrations
                     b.HasData(
                         new
                         {
-                            TimeSlotId = 1L,
+                            TimeSlotId = 1,
                             Date = "3/24",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 2L,
+                            TimeSlotId = 2,
                             Date = "3/24",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 3L,
+                            TimeSlotId = 3,
                             Date = "3/24",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 4L,
+                            TimeSlotId = 4,
                             Date = "3/24",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 5L,
+                            TimeSlotId = 5,
                             Date = "3/24",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 6L,
+                            TimeSlotId = 6,
                             Date = "3/24",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 7L,
+                            TimeSlotId = 7,
                             Date = "3/24",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 8L,
+                            TimeSlotId = 8,
                             Date = "3/24",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 9L,
+                            TimeSlotId = 9,
                             Date = "3/24",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 10L,
+                            TimeSlotId = 10,
                             Date = "3/24",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 11L,
+                            TimeSlotId = 11,
                             Date = "3/24",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 12L,
+                            TimeSlotId = 12,
                             Date = "3/24",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 13L,
+                            TimeSlotId = 13,
                             Date = "3/24",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 14L,
+                            TimeSlotId = 14,
                             Date = "3/25",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 15L,
+                            TimeSlotId = 15,
                             Date = "3/25",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 16L,
+                            TimeSlotId = 16,
                             Date = "3/25",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 17L,
+                            TimeSlotId = 17,
                             Date = "3/25",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 18L,
+                            TimeSlotId = 18,
                             Date = "3/25",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 19L,
+                            TimeSlotId = 19,
                             Date = "3/25",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 20L,
+                            TimeSlotId = 20,
                             Date = "3/25",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 21L,
+                            TimeSlotId = 21,
                             Date = "3/25",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 22L,
+                            TimeSlotId = 22,
                             Date = "3/25",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 23L,
+                            TimeSlotId = 23,
                             Date = "3/25",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 24L,
+                            TimeSlotId = 24,
                             Date = "3/25",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 25L,
+                            TimeSlotId = 25,
                             Date = "3/25",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 26L,
+                            TimeSlotId = 26,
                             Date = "3/25",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 27L,
+                            TimeSlotId = 27,
                             Date = "3/26",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 28L,
+                            TimeSlotId = 28,
                             Date = "3/26",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 29L,
+                            TimeSlotId = 29,
                             Date = "3/26",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 30L,
+                            TimeSlotId = 30,
                             Date = "3/26",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 31L,
+                            TimeSlotId = 31,
                             Date = "3/26",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 32L,
+                            TimeSlotId = 32,
                             Date = "3/26",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 33L,
+                            TimeSlotId = 33,
                             Date = "3/26",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 34L,
+                            TimeSlotId = 34,
                             Date = "3/26",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 35L,
+                            TimeSlotId = 35,
                             Date = "3/26",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 36L,
+                            TimeSlotId = 36,
                             Date = "3/26",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 37L,
+                            TimeSlotId = 37,
                             Date = "3/26",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 38L,
+                            TimeSlotId = 38,
                             Date = "3/26",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 39L,
+                            TimeSlotId = 39,
                             Date = "3/26",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 40L,
+                            TimeSlotId = 40,
                             Date = "3/27",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 41L,
+                            TimeSlotId = 41,
                             Date = "3/27",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 42L,
+                            TimeSlotId = 42,
                             Date = "3/27",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 43L,
+                            TimeSlotId = 43,
                             Date = "3/27",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 44L,
+                            TimeSlotId = 44,
                             Date = "3/27",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 45L,
+                            TimeSlotId = 45,
                             Date = "3/27",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 46L,
+                            TimeSlotId = 46,
                             Date = "3/27",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 47L,
+                            TimeSlotId = 47,
                             Date = "3/27",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 48L,
+                            TimeSlotId = 48,
                             Date = "3/27",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 49L,
+                            TimeSlotId = 49,
                             Date = "3/27",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 50L,
+                            TimeSlotId = 50,
                             Date = "3/27",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 51L,
+                            TimeSlotId = 51,
                             Date = "3/27",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 52L,
+                            TimeSlotId = 52,
                             Date = "3/27",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 53L,
+                            TimeSlotId = 53,
                             Date = "3/28",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 54L,
+                            TimeSlotId = 54,
                             Date = "3/28",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 55L,
+                            TimeSlotId = 55,
                             Date = "3/28",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 56L,
+                            TimeSlotId = 56,
                             Date = "3/28",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 57L,
+                            TimeSlotId = 57,
                             Date = "3/28",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 58L,
+                            TimeSlotId = 58,
                             Date = "3/28",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 59L,
+                            TimeSlotId = 59,
                             Date = "3/28",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 60L,
+                            TimeSlotId = 60,
                             Date = "3/28",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 61L,
+                            TimeSlotId = 61,
                             Date = "3/28",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 62L,
+                            TimeSlotId = 62,
                             Date = "3/28",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 63L,
+                            TimeSlotId = 63,
                             Date = "3/28",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 64L,
+                            TimeSlotId = 64,
                             Date = "3/28",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 65L,
+                            TimeSlotId = 65,
                             Date = "3/28",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 66L,
+                            TimeSlotId = 66,
                             Date = "3/29",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 67L,
+                            TimeSlotId = 67,
                             Date = "3/29",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 68L,
+                            TimeSlotId = 68,
                             Date = "3/29",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 69L,
+                            TimeSlotId = 69,
                             Date = "3/29",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 70L,
+                            TimeSlotId = 70,
                             Date = "3/29",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 71L,
+                            TimeSlotId = 71,
                             Date = "3/29",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 72L,
+                            TimeSlotId = 72,
                             Date = "3/29",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 73L,
+                            TimeSlotId = 73,
                             Date = "3/29",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 74L,
+                            TimeSlotId = 74,
                             Date = "3/29",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 75L,
+                            TimeSlotId = 75,
                             Date = "3/29",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 76L,
+                            TimeSlotId = 76,
                             Date = "3/29",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 77L,
+                            TimeSlotId = 77,
                             Date = "3/29",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 78L,
+                            TimeSlotId = 78,
                             Date = "3/29",
                             Reserved = false,
                             Time = "8:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 79L,
+                            TimeSlotId = 79,
                             Date = "3/30",
                             Reserved = false,
                             Time = "8:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 80L,
+                            TimeSlotId = 80,
                             Date = "3/30",
                             Reserved = false,
                             Time = "9:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 81L,
+                            TimeSlotId = 81,
                             Date = "3/30",
                             Reserved = false,
                             Time = "10:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 82L,
+                            TimeSlotId = 82,
                             Date = "3/30",
                             Reserved = false,
                             Time = "11:00 AM"
                         },
                         new
                         {
-                            TimeSlotId = 83L,
+                            TimeSlotId = 83,
                             Date = "3/30",
                             Reserved = false,
                             Time = "12:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 84L,
+                            TimeSlotId = 84,
                             Date = "3/30",
                             Reserved = false,
                             Time = "1:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 85L,
+                            TimeSlotId = 85,
                             Date = "3/30",
                             Reserved = false,
                             Time = "2:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 86L,
+                            TimeSlotId = 86,
                             Date = "3/30",
                             Reserved = false,
                             Time = "3:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 87L,
+                            TimeSlotId = 87,
                             Date = "3/30",
                             Reserved = false,
                             Time = "4:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 88L,
+                            TimeSlotId = 88,
                             Date = "3/30",
                             Reserved = false,
                             Time = "5:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 89L,
+                            TimeSlotId = 89,
                             Date = "3/30",
                             Reserved = false,
                             Time = "6:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 90L,
+                            TimeSlotId = 90,
                             Date = "3/30",
                             Reserved = false,
                             Time = "7:00 PM"
                         },
                         new
                         {
-                            TimeSlotId = 91L,
+                            TimeSlotId = 91,
                             Date = "3/30",
                             Reserved = false,
                             Time = "8:00 PM"
                         });
+                });
+
+            modelBuilder.Entity("Project2.Models.Reservation", b =>
+                {
+                    b.HasOne("Project2.Models.TimeSlot", "TimeSlot")
+                        .WithMany()
+                        .HasForeignKey("TimeSlotId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

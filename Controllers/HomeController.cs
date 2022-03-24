@@ -32,7 +32,9 @@ namespace Project2.Controllers
         }
         public IActionResult ViewAppointments()
         {
-            return View();
+            var appointments = _templeContext.Reservations
+                .ToList();
+            return View(appointments);
         }
 
 
@@ -61,21 +63,24 @@ namespace Project2.Controllers
         }
         
         [HttpPost]
-        public IActionResult SignUp(Reservation r)
+        public IActionResult SignUp(AppointmentViewModel r)
         {
+            r.Reservation.TimeSlotId = r.TimeSlot.TimeSlotId;
             if (ModelState.IsValid)
             {
-                _templeContext.Add(r);
+                _templeContext.Add(r.Reservation);
                 _templeContext.SaveChanges();
 
-                return RedirectToAction("Home");
+                return RedirectToAction("Index");
             }
 
             else
             {
                 return View();
             }
-            
+
+
+
         }
 
 
