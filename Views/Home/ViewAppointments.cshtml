@@ -1,6 +1,5 @@
 ﻿@{
 }
-@model List<Reservation>
 
 
 <table class="table table-bordered table-striped">
@@ -25,6 +24,9 @@
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td>@x.Time</td>
+
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
                 </tr>
             }
     </tbody>
