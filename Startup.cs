@@ -34,6 +34,8 @@ namespace Project2
             {
                 options.UseSqlite(Configuration["ConnectionStrings:TempleConnection"]);
             });
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +53,10 @@ namespace Project2
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{appointmentid}");
+                
             });
         }
     }
