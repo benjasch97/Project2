@@ -19,13 +19,13 @@ namespace Project2.Models
 
         [Required(ErrorMessage = "The maximum group size is 15.")]
         [Range(1, 15)]
-        public byte GroupSize { get; set; }
+        public int GroupSize { get; set; }
        
         [Required(ErrorMessage = "Please enter an email")]
         public string Email { get; set; }
         public string Phone { get; set; }
 
         [Required]
-        public TimeSlot TimeSlot { get; set; }
+        public long TimeSlotId { get; set; }
     }
 }
