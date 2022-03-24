@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project2.Models;
+using Project2.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,9 +84,19 @@ namespace Project2.Controllers
 
         }
 
-        public IActionResult SignUp()
+        [HttpGet]
+        public IActionResult SignUp(long timeSlotId)
         {
-            return View();
+            var x = new AppointmentViewModel
+            {
+                Reservation = new Reservation(),
+                
+                TimeSlot = _templeContext.TimeSlots.Single(x => x.TimeSlotId == timeSlotId)
+
+            };
+            
+            
+            return View("SignUp", x);
         }
         
         [HttpPost]
@@ -93,8 +104,10 @@ namespace Project2.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TempleContext.Add(r);
-               // TempleContext.SaveChanges();
+
+                _templeContext.Add(r);
+                _templeContext.SaveChanges();
+
 
                 return RedirectToAction("Home");
             }
