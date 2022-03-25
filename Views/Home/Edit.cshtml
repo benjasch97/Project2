@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Sign Up";
+}
+
+@model AppointmentViewModel
+
+<style>
+    div.validation-message {
+        color: rgb(220, 53, 69);
+        font-weight: 500
+    }
+</style>
+
+<h3 class="bg-dark text-white text-center p-1">Edit Your Reservation</h3>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+
+    <div class="form-group">
+        <label>Group Name:</label>
+        <input class="form-control text-success border border-primary bg-light" asp-for="Reservation.GroupName" />
+    </div>
+
+
+    <div class="form-group">
+        <label>Group Size:</label>
+
+        <input class="form-control text-success border border-primary bg-light" asp-for="Reservation.GroupSize">
+    </div>
+
+    <div class="form-group">
+        <label>Email:</label>
+        <input class="form-control text-success border border-primary bg-light" asp-for="Reservation.Email" />
+    </div>
+
+    <div class="form-group">
+        <label>Phone Number:</label>
+        <input class="form-control text-success border border-primary bg-light" asp-for="Reservation.Phone" />
+    </div>
+
+    <input type="hidden" asp-for="Reservation.ReservationId" />
+    <input type="hidden" asp-for="TimeSlot.TimeSlotId" />
+
+    <br />
+    <button type="submit" class="btn btn-dark p-1">Save</button>
+    <input type="hidden" name="reservationid" value="@Model.Reservation.ReservationId" />
+    <a class="btn btn-light p-1" asp-controller="Home" asp-action="Index">Cancel</a>
+
+</form>

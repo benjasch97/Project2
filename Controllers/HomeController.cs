@@ -27,6 +27,7 @@ namespace Project2.Controllers
         public IActionResult TimeSlots()
         {
             var times = _templeContext.TimeSlots
+                .Where(t => t.Reserved == false)
                 .ToList();
             
             return View(times);
@@ -43,48 +44,64 @@ namespace Project2.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int reservationid)
+        public IActionResult Edit(int reservationid, long timeslotid)
         {
-            ViewBag.Categories = _templeContext.Reservations.ToList();
-
-            var reservation = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
-            //connect id to bring the info back
-            return View("SignUp", reservation);
+            var x = new AppointmentViewModel
+            {
+                Reservation = _templeContext.Reservations.Single(x => x.ReservationId == reservationid),
+                TimeSlot = _templeContext.TimeSlots.Single(x => x.TimeSlotId == timeslotid)
+            };
+        
+            return View("Edit", x);
         }
 
         [HttpPost]
-        public IActionResult Edit(Reservation bob)
+        public IActionResult Edit(AppointmentViewModel r, int reservationid)
         {
+            r.Reservation.TimeSlotId = r.TimeSlot.TimeSlotId;
             if (ModelState.IsValid)
             {
-                _templeContext.Update(bob);
+                Reservation oldappointment = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
+                _templeContext.Update(r.Reservation);
+                _templeContext.Remove(oldappointment);
                 _templeContext.SaveChanges();
+          
+
+
                 return RedirectToAction("ViewAppointments");
+
             }
+
+
             else
             {
-                ViewBag.Categories = _templeContext.TimeSlots.ToList();
-                return View("SignUp");
+                return View();
             }
+
+
         }
 
-    
         [HttpGet]
         public IActionResult Delete(int reservationid)
         {
-            var movies = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
-            return View(movies);
-        }
-        [HttpPost]
-        public IActionResult Delete(Reservation r)
-        {
-            _templeContext.Reservations.Remove(r);
+             Reservation reservation = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
+            _templeContext.Reservations.Remove(reservation);
+            _templeContext.TimeSlots.Single(x => x.TimeSlotId == reservation.TimeSlotId).Reserved = false;
             _templeContext.SaveChanges();
-
             return RedirectToAction("ViewAppointments");
-
-
         }
+        //[HttpPost]
+        //public IActionResult Delete(Reservation r, int reservationid )
+        //{
+        //    Reservation appointmenttodelete = _templeContext.Reservations.Single(x => x.ReservationId == reservationid);
+
+        //    _templeContext.Reservations.Remove(r);
+        //    _templeContext.SaveChanges();
+
+        //    return RedirectToAction("ViewAppointments");
+
+
+        //}
 
         [HttpGet]
         public IActionResult SignUp(long timeSlotId)
@@ -107,7 +124,7 @@ namespace Project2.Controllers
             r.Reservation.TimeSlotId = r.TimeSlot.TimeSlotId;
             if (ModelState.IsValid)
             {
-
+                _templeContext.TimeSlots.Single(x => x.TimeSlotId == r.Reservation.TimeSlotId).Reserved = true;
                 _templeContext.Add(r.Reservation);
                 _templeContext.SaveChanges();
 
